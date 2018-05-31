@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Collaborateur {
@@ -46,6 +48,10 @@ public class Collaborateur {
 
 	@Column(name = "ACTIF", nullable = false)
 	private boolean actif;
+
+	@ManyToOne
+	@JoinColumn(name = "id_departement")
+	private Departement departement;
 
 	public String getMatricule() {
 		return matricule;
@@ -133,5 +139,13 @@ public class Collaborateur {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 }
