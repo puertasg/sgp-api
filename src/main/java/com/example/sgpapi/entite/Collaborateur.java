@@ -1,4 +1,4 @@
-package dev.sgp.entite;
+package com.example.sgpapi.entite;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Collaborateur {
@@ -52,6 +53,10 @@ public class Collaborateur {
 	@ManyToOne
 	@JoinColumn(name = "id_departement")
 	private Departement departement;
+
+	@OneToOne
+	@JoinColumn(name = "id_banque")
+	private Banque banque;
 
 	public String getMatricule() {
 		return matricule;
@@ -147,5 +152,13 @@ public class Collaborateur {
 
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
+	}
+
+	public Banque getBanque() {
+		return banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
 	}
 }
