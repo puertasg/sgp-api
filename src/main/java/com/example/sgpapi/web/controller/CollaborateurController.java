@@ -3,6 +3,7 @@ package com.example.sgpapi.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,28 +24,33 @@ public class CollaborateurController {
 	private CollaborateurRepository collabRepo;
 
 	@GetMapping
+	@CrossOrigin
 	public List<Collaborateur> listerCollaborateurs() {
 		System.out.println("lister");
 		return collabRepo.findAll();
 	}
 
 	@GetMapping(params = "departement")
+	@CrossOrigin
 	public List<Collaborateur> listerCollaborateurDepartement(@RequestParam(value = "departement") Integer id) {
 		return collabRepo.findByDepartementId(id);
 	}
 
 	@GetMapping("/{matricule}")
+	@CrossOrigin
 	public Collaborateur retournerCollaborateur(@PathVariable(value = "matricule") String matricule) {
 		return collabRepo.findByMatricule(matricule);
 	}
 
 	@GetMapping("/{matricule}/banque")
+	@CrossOrigin
 	public Banque retournerBanque(@PathVariable(value = "matricule") String matricule) {
 		Collaborateur collab = collabRepo.findByMatricule(matricule);
 		return collab.getBanque();
 	}
 
 	@PutMapping("/{matricule}")
+	@CrossOrigin
 	public void updateCollaborateur(@PathVariable(value = "matricule") String matricule,
 			@RequestBody Collaborateur newCollab) {
 		Collaborateur oldCollab = collabRepo.findByMatricule(matricule);
@@ -54,6 +60,7 @@ public class CollaborateurController {
 	}
 
 	@PutMapping("/{matricule}/banque")
+	@CrossOrigin
 	public void updateBanque(@PathVariable(value = "matricule") String matricule, @RequestBody Banque banque) {
 
 		Collaborateur collab = collabRepo.findByMatricule(matricule);
