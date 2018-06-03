@@ -54,8 +54,7 @@ public class Collaborateur {
 	@JoinColumn(name = "id_departement")
 	private Departement departement;
 
-	@OneToOne
-	@JoinColumn(name = "id_banque")
+	@Embedded
 	private Banque banque;
 
 	public String getMatricule() {
