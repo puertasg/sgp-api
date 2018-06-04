@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.sgpapi.entite.Banque;
 import com.example.sgpapi.entite.Collaborateur;
 import com.example.sgpapi.entite.Departement;
-import com.example.sgpapi.repository.BanqueRepository;
 import com.example.sgpapi.repository.CollaborateurRepository;
 import com.example.sgpapi.repository.DepartementRepository;
 
@@ -23,9 +22,6 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 
 	@Autowired
 	private DepartementRepository departRepo;
-
-	@Autowired
-	private BanqueRepository banqueRepo;
 
 	@Override
 	public void initialiser() {
@@ -71,7 +67,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		Banque banque2 = new Banque();
 		banque2.setBic("bic456");
 		banque2.setIban("iban456");
-		banque2.setId("CA");
+		banque2.setNomBanque("CA");
 
 		collab1.setBanque(banque1);
 		collab2.setBanque(banque2);
