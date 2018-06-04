@@ -1,32 +1,19 @@
 package com.example.sgpapi.entite;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 
-@Entity
+@Embeddable
 public class Banque {
+	
+	@Column(name="NOM_BANQUE", nullable = false)
+	private String nomBanque;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_banque", unique = true, nullable = false)
-	private int id;
-
-	@Column(name = "IBAN", unique = true, nullable = false)
+	@Column(name = "IBAN", nullable = false)
 	private String iban;
 
-	@Column(name = "BIC", unique = true, nullable = false)
+	@Column(name = "BIC", nullable = false)
 	private String bic;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getIban() {
 		return iban;
@@ -42,5 +29,13 @@ public class Banque {
 
 	public void setBic(String bic) {
 		this.bic = bic;
+	}
+	
+	public String getNomBanque() {
+		return nomBanque;
+	}
+
+	public void setNomBanque(String nomBanque) {
+		this.nomBanque = nomBanque;
 	}
 }
